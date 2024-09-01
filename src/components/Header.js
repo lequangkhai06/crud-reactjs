@@ -1,18 +1,34 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { toast } from "react-toastify";
 
 const Header = (props) => {
+  const location = useLocation();
   const { logout, user } = useContext(UserContext);
   const navigate = useNavigate();
-  const location = useLocation();
   const handleLogout = () => {
     navigate("/login");
     logout();
     toast.success("Logout success!");
   };
+  // custom title
+  useEffect(() => {
+    let title = "Home";
+    switch (location.pathname) {
+      case "/users":
+        title = "List Users";
+        break;
+      case "/login":
+        title = "Login";
+        break;
+      default:
+        break;
+    }
+    document.title = title;
+  }, [location.pathname]);
+
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary bg-light shadow">

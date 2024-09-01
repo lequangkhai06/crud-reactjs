@@ -58,8 +58,10 @@ const ModalAddUser = ({ showModal, hideModal }) => {
             <Form.Control
               type="text"
               placeholder="Enter name..."
+              className="input-form-custom"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              autoFocus
               required
             />
           </Form.Group>
@@ -68,6 +70,7 @@ const ModalAddUser = ({ showModal, hideModal }) => {
             <Form.Control
               type="text"
               placeholder="Enter job..."
+              className="input-form-custom"
               value={job}
               onChange={(e) => setJob(e.target.value)}
               required

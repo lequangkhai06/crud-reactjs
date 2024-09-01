@@ -80,6 +80,8 @@ const ModalEditUser = ({ showModal, hideModal, userDataEdit }) => {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
+              autoFocus
+              className="input-form-custom"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -90,6 +92,7 @@ const ModalEditUser = ({ showModal, hideModal, userDataEdit }) => {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
+              className="input-form-custom"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -97,6 +100,7 @@ const ModalEditUser = ({ showModal, hideModal, userDataEdit }) => {
             <Form.Control
               type="email"
               placeholder="Enter email..."
+              className="input-form-custom"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

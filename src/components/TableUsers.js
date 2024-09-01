@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { fetchAllUser } from "../services/UserService";
-import { Table, Button, Form, Spinner } from "react-bootstrap";
+import { Table, Button, Form, Spinner, Alert } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import ModalAddUser from "./ModalAddUser";
 import ModalEditUser from "./ModalEditUser";
@@ -40,6 +40,7 @@ const TableUsers = (props) => {
     setTableLoading(true);
     let res = await fetchAllUser(page);
     if (res && res.data && res.data.data) {
+      // console.log(res.data.data);
       setTableLoading(false);
       setTotalUsers(res.data.total);
       setListUsers(res.data.data);
@@ -126,9 +127,10 @@ const TableUsers = (props) => {
       <Form.Control
         type="search"
         placeholder="Search users..."
-        className="me-2 mb-3"
+        className="me-2 mb-3 input-form-custom"
         value={searchTerm}
         onChange={handleSearchChange}
+        autoFocus
       />
       <ModalAddUser showModal={showModal} hideModal={handleHideModal} />
       <ModalEditUser
@@ -151,19 +153,19 @@ const TableUsers = (props) => {
       ) : (
         ""
       )}
-      <Table responsive striped bordered hover>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {displayedUsers.length > 0 &&
-            displayedUsers.map((item, index) => (
+      {displayedUsers.length > 0 ? (
+        <Table responsive striped bordered hover className="shadow-sm">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Email</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {displayedUsers.map((item, index) => (
               <tr key={`users-${index}`}>
                 <td>{item.id}</td>
                 <td>{item.email}</td>
@@ -190,8 +192,13 @@ const TableUsers = (props) => {
                 </td>
               </tr>
             ))}
-        </tbody>
-      </Table>
+          </tbody>
+        </Table>
+      ) : (
+        <Alert key="primary" variant="primary">
+          <strong>No user found!</strong>
+        </Alert>
+      )}
       <ReactPaginate
         breakLabel="..."
         nextLabel="»"
