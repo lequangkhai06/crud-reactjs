@@ -57,7 +57,9 @@ const ConfirmModal = ({ showModal, hideModal, userDataEdit }) => {
       <Modal.Body>
         <Form onSubmit={handleDeleteUser}>
           <Alert variant="primary">
-            <strong>Are you sure you want to delete user email: {email}?</strong>
+            <strong>
+              Are you sure you want to delete user email: {email}?
+            </strong>
           </Alert>
           <Button
             variant="danger"

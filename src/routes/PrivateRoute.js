@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Alert } from "react-bootstrap";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 const PrivateRoute = (props) => {
   const navigate = useNavigate();
