@@ -1,18 +1,22 @@
 import "./App.scss";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { Container } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./context/UserContext";
 import AppRoutes from "./routes/AppRoutes";
 function App() {
-  const { user, loginContext} = useContext(UserContext);
+  const { user, loginContext } = useContext(UserContext);
   console.log(user);
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      loginContext(localStorage.getItem("email"), localStorage.getItem("token"));
+      loginContext(
+        localStorage.getItem("email"),
+        localStorage.getItem("token")
+      );
     }
-  },[]);
+  }, []);
   return (
     <>
       <div className="app-container">
@@ -20,6 +24,7 @@ function App() {
         <Container>
           <AppRoutes></AppRoutes>
         </Container>
+        <Footer />
       </div>
       <ToastContainer
         position="top-right"
