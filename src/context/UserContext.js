@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 // @function  UserContext
 const UserContext = React.createContext({ email: "", auth: false });
 
