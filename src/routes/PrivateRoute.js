@@ -12,7 +12,7 @@ const PrivateRoute = (props) => {
           <Alert.Heading>Please Login!!!</Alert.Heading>
           <p>You don't have permission to access this route.</p>
           <button className="btn btn-danger" onClick={() => navigate("/login")}>
-            Login here
+            Login now
           </button>
         </Alert>
       </>
