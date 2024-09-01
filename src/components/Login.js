@@ -141,13 +141,17 @@ const Login = () => {
                 autoFocus
               />
             </Form.Group>
+            <div className="mt-3"></div>
+            <Button
+              variant="primary"
+              type="submit"
+              className="form-control"
+              onClick={handleSendEmail}
+            >
+              Next step
+            </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary form-control" onClick={handleSendEmail}>
-            Next step
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
