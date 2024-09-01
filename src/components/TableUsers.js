@@ -80,15 +80,6 @@ const TableUsers = (props) => {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
-  // const csvData = [
-  //   ["firstname", "lastname", "email"],
-  //   ["Ahmed", "Tomi", "ah@smthing.co.com"],
-  //   ["Raed", "Labes", "rl@smthing.co.com"],
-  //   ["Yezzi", "Min l3b", "ymin@cocococo.com"],
-  // ];
-  // console.log("DATA: ",csvData);
-  // console.log("USER DATA", listUsers)
   const handleImportFile = () => {
     fileInputRef.current.click();
   };
@@ -100,7 +91,6 @@ const TableUsers = (props) => {
       console.log("Selected file:", file);
     }
   };
-
   return (
     <>
       <div className="d-flex align-items-center mb-2 py-3">
@@ -151,6 +141,16 @@ const TableUsers = (props) => {
         hideModal={handleHideConfirmModal}
         userDataEdit={userDataEdit}
       />
+      {tableLoading ? (
+        <>
+          <div className="text-center">
+            <Spinner animation="border" className="text-primary" />
+            <p className="mt-2">Loading data...</p>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
       <Table responsive striped bordered hover>
         <thead>
           <tr>
@@ -192,16 +192,6 @@ const TableUsers = (props) => {
             ))}
         </tbody>
       </Table>
-      {tableLoading ? (
-        <>
-          <div className="text-center">
-            <Spinner animation="border" className="text-primary" />
-            <p className="mt-2">Loading data...</p>
-          </div>
-        </>
-      ) : (
-        ""
-      )}
       <ReactPaginate
         breakLabel="..."
         nextLabel="»"
